@@ -1,16 +1,33 @@
 package be.ac.umons;
 
 public class FactoryHut extends AbstractFactory {
-    static String name = "FactoryHut";
-    static int stock[];
-
-    @Override
-    public String getFactory(String name) {
-        return null;
+    private static FactoryDominos instance = null;
+    public static FactoryDominos getFactory() {
+        if (instance == null) {
+            instance = new FactoryDominos();
+        }
+        return instance;
     }
-
-    @Override
-    public String createPizza(String name) {
-        return null;
-    }
+    static int stock [] = {2,2,2,2};
+    public Pizza createPizza(String name){
+        if (name == "Prosciutto" && stock[0] > 0 ) {
+            stock[0] = stock [0] - 1;
+            return new Prosciutto();
+        }
+        else if (name == "FruttiDiMare"&& stock[1] > 0 ) {
+            stock[1] = stock [1] - 1;
+            return new FruttiDiMarre();
+        }
+        else if (name == "Carbonara"&& stock[2] > 0 ){
+            stock[2] = stock [2] - 1;
+            return new Carbonara();
+        }
+        else if (name == "Margheritta"&& stock[3] > 0 ){
+            stock[3] = stock [3] - 1;
+            return new Margherita();
+        }
+        else {
+            return null;
+        }
+    };
 }
