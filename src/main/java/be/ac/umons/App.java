@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class App
 {
-
+    public static Map<String, Ingredient> ingredients = new HashMap<>();
     public static void main( String[] args )
     {
         Map<String, Ingredient> ingredients = new HashMap<>();
@@ -32,7 +32,8 @@ public class App
             ResultSet rs = db.querySelect("SELECT * FROM ingredients");
 
             while (rs.next()) {
-                Ingredient ingredient = new Ingredient();
+                String name = null;
+                Ingredient ingredient = new Ingredient(name, App.ingredients.get("Chesse").getPrice());
                 ingredient.setName(rs.getString("name"));
                 ingredient.setPrice(rs.getBigDecimal("price"));
 
@@ -56,6 +57,7 @@ public class App
         }*/
 
         ingredients.forEach((k, v) -> System.out.println(k + " : " + v.getPrice() + " €"));
+
     }
 
     /**
@@ -67,6 +69,7 @@ public class App
             DBSingleton db = DBSingleton.getSingleton();
 
             Object[] arguments = new Object[2];
+            
             arguments[0] = formatDotDecimal(new BigDecimal(10.2));
             arguments[1] = "N/A";
 
@@ -105,4 +108,6 @@ public class App
     }
 
 }
+
+   
 

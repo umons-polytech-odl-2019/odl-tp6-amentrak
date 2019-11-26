@@ -6,8 +6,7 @@ public class Ingredient {
     private String name;
     private BigDecimal price;
 
-    public Ingredient() {
-    }
+    public Ingredient(String name, BigDecimal price) {}
 
     public String getName() {
         return name;
