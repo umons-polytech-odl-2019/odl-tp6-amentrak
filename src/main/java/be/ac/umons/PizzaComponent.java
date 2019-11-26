@@ -1,13 +1,15 @@
-package be.ac.umons.util;
+package be.ac.umons;
+
+import java.math.BigDecimal;
 
 public interface PizzaComponent {
     public abstract String getName();
 
-    public abstract float getPrice();
+    public abstract BigDecimal getPrice();
 
-    public abstract void setName(float n);
+    public abstract void setName(String n);
 
-    public abstract void setPrice(float p);
+    public abstract void setPrice(BigDecimal p);
 
     public abstract String toString();
 }

@@ -1,12 +1,12 @@
-package be.ac.umons.util;
+package be.ac.umons;
 
-import be.ac.umons.Ingredient;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class Pizza {
+public class Pizza implements PizzaComponent {
     private String name;
-    private float price=0;
+    private BigDecimal price;
     private ArrayList<Ingredient>listIngredients;
 
     public Pizza (String name) {}
@@ -15,7 +15,10 @@ public class Pizza {
         return name;
     }
 
-    float getPrice(){
+    public BigDecimal getPrice(){
+        for (Ingredient i : listIngredients){
+            price.add(i.getPrice()) ;
+        }
         return price;
     }
 
@@ -23,7 +26,7 @@ public class Pizza {
         this.name = n;
     }
 
-    public void setPrice(float p) {
+    public void setPrice(BigDecimal p) {
         this.price = p;
     }
 
@@ -36,6 +39,6 @@ public class Pizza {
     }
 
     public String toString(){
-        return super.toString();
+        return (String.valueOf(this.price)+name);
     }
 }
